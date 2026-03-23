@@ -1,8 +1,8 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Menu, X, MapPin, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
 import { useState } from "react";
-import logo from "figma:asset/c31ed4306a186284e02a03ecc1310824ad68de52.png";
-import logoLycee from "figma:asset/0d694966550b9cb3b72bf4db8905e0606580b564.png";
+import logo from "../../assets/logo.png";
+import logoLycee from "../../assets/logo-lycee.jpg";
 
 export function Root() {
   const location = useLocation();
