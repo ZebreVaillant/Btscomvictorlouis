@@ -6,6 +6,8 @@ import { Debouches } from "./pages/Debouches";
 import { Admission } from "./pages/Admission";
 import { Contact } from "./pages/Contact";
 import { Portfolios } from "./pages/Portfolios";
+import { Actualites } from "./pages/Actualites";
+import { JourneeType } from "./pages/JourneeType";
 
 export const router = createBrowserRouter([
   {
@@ -16,8 +18,10 @@ export const router = createBrowserRouter([
       { path: "programme", Component: Programme },
       { path: "debouches", Component: Debouches },
       { path: "portfolios", Component: Portfolios },
+      { path: "actualites", Component: Actualites },
       { path: "admission", Component: Admission },
       { path: "contact", Component: Contact },
+      { path: "journee-type", Component: JourneeType },
     ],
   },
 ]);

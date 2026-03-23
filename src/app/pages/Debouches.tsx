@@ -145,7 +145,7 @@ export function Debouches() {
               <div className="text-white/80">trouvent un emploi dans les 6 mois</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-[#F39226] mb-2">60%</div>
+              <div className="text-5xl font-bold text-[#F39226] mb-2">80%</div>
               <div className="text-white/80">poursuivent leurs études</div>
             </div>
             <div className="text-center">

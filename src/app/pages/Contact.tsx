@@ -82,7 +82,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Téléphone</h3>
-                    <p className="text-gray-700">05 56 84 18 10</p>
+                    <p className="text-gray-700">05 56 80 76 40</p>
                   </div>
                 </div>
 
@@ -94,7 +94,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <p className="text-gray-700">btscom@lycee-victorlouis.fr</p>
+                    <p className="text-gray-700">bts-com-vl@gmail.com</p>
                   </div>
                 </div>
 
@@ -122,7 +122,6 @@ export function Contact() {
                 <div className="space-y-2 text-sm text-gray-700">
                   <p><span className="font-semibold">Tram B :</span> Arrêt Arts et Métiers</p>
                   <p><span className="font-semibold">Bus :</span> Lignes 10, 35, 44</p>
-                  <p><span className="font-semibold">Parking :</span> Disponible sur le campus</p>
                 </div>
               </div>
             </div>
@@ -271,19 +270,19 @@ export function Contact() {
       </section>
 
       {/* Journées portes ouvertes */}
-      <section className="py-20 bg-[#1C5C7F] text-white">
+      <section className="py-20 bg-gray-100 border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-4xl font-bold mb-6 text-[#1C5C7F]">
             Journées Portes Ouvertes
           </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Venez découvrir notre formation et rencontrer l'équipe pédagogique
+          <p className="text-xl text-gray-600 mb-8">
+            La dernière journée portes ouvertes s'est tenue le
           </p>
-          <div className="bg-white/10 p-8 rounded-xl max-w-md mx-auto">
-            <p className="text-2xl font-bold mb-2">Samedi 15 février 2026</p>
-            <p className="text-lg mb-4">9h00 - 17h00</p>
-            <p className="text-white/80">
-              Visite des locaux, présentation de la formation, échanges avec les étudiants et enseignants
+          <div className="bg-white border-2 border-gray-200 p-8 rounded-xl max-w-md mx-auto">
+            <p className="text-2xl font-bold mb-2 text-[#1C5C7F]">Vendredi 7 mars 2026</p>
+            <p className="text-lg mb-4 text-gray-600">Matinée</p>
+            <p className="text-gray-600">
+              Merci à tous ceux qui sont venus découvrir notre formation !
             </p>
           </div>
         </div>

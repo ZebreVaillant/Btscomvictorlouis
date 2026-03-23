@@ -1,8 +1,14 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Menu, X, MapPin, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
 import { useState } from "react";
-import logo from "../../assets/logo.png";
-import logoLycee from "../../assets/logo-lycee.jpg";
+import logo from "figma:asset/c31ed4306a186284e02a03ecc1310824ad68de52.png";
+import logoLycee from "figma:asset/0d694966550b9cb3b72bf4db8905e0606580b564.png";
+import { FloatingContactBar } from "./FloatingContactBar";
+import { ScrollToTop } from "./ScrollToTop";
+import { Chatbot } from "./Chatbot";
+import { CustomCursor } from "./CustomCursor";
+import { EasterEgg } from "./EasterEgg";
+import { FloatingParticles } from "./FloatingParticles";
 
 export function Root() {
   const location = useLocation();
@@ -13,6 +19,7 @@ export function Root() {
     { path: "/programme", label: "Le Programme" },
     { path: "/debouches", label: "Débouchés" },
     { path: "/portfolios", label: "Portfolios" },
+    { path: "/actualites", label: "Actualités" },
     { path: "/admission", label: "Admission" },
     { path: "/contact", label: "Contact" },
   ];
@@ -26,28 +33,67 @@ export function Root() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      {/* Scroll to Top on route change */}
+      <ScrollToTop />
+      
+      {/* Floating Contact Bar */}
+      <FloatingContactBar />
+      
+      {/* Chatbot */}
+      <Chatbot />
+      
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
+      {/* Easter Egg */}
+      <EasterEgg />
+      
+      {/* Floating Particles */}
+      <FloatingParticles />
+      
       {/* Navigation */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <img src={logo} alt="BTS Communication - Lycée Victor Louis Talence" className="h-20 w-auto" />
+          <div className="flex justify-between items-center h-24">
+            {/* Logo avec effet moderne */}
+            <Link to="/" className="relative group -my-6">
+              {/* Glow effect background */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-[#1C5C7F] via-[#F39226] to-[#1C5C7F] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500 animate-gradient"></div>
+              
+              {/* Logo container avec effet de carte */}
+              <div className="relative bg-gradient-to-br from-gray-50 to-white px-5 py-3 rounded-xl border-2 border-transparent group-hover:border-[#F39226]/30 transition-all duration-300 shadow-sm group-hover:shadow-lg">
+                <img 
+                  src={logo} 
+                  alt="BTS Communication - Lycée Victor Louis Talence" 
+                  className="h-32 w-auto object-contain transition-all duration-300 group-hover:scale-105 relative z-10" 
+                />
+                
+                {/* Petit badge "BTS" animé */}
+                <div className="absolute -top-1 -right-1 bg-gradient-to-br from-[#F39226] to-[#E07B15] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-100 scale-75">
+                  BTS
+                </div>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-sm transition-colors ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                     isActive(link.path)
-                      ? "text-[#1C5C7F] font-semibold"
-                      : "text-gray-700 hover:text-[#F39226]"
+                      ? "text-[#1C5C7F]"
+                      : "text-gray-600 hover:text-[#F39226] hover:bg-orange-50"
                   }`}
                 >
                   {link.label}
+                  {/* Underline animé pour le lien actif */}
+                  <span
+                    className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-[#1C5C7F] to-[#F39226] transition-all duration-300 ${
+                      isActive(link.path) ? "w-3/4" : "w-0 group-hover:w-3/4"
+                    }`}
+                  />
                 </Link>
               ))}
             </div>
@@ -55,7 +101,7 @@ export function Root() {
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700"
+              className="md:hidden p-2.5 text-gray-700 hover:text-[#F39226] hover:bg-orange-50 rounded-lg transition-all duration-300"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -63,16 +109,17 @@ export function Root() {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t">
-              {navLinks.map((link) => (
+            <div className="md:hidden py-4 border-t border-gray-100 bg-white/95 backdrop-blur-md">
+              {navLinks.map((link, index) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block py-3 text-sm transition-colors ${
+                  style={{ animationDelay: `${index * 50}ms` }}
+                  className={`block py-3 px-4 text-sm font-medium rounded-lg mx-2 mb-1 transition-all duration-300 animate-fade-in ${
                     isActive(link.path)
-                      ? "text-[#1C5C7F] font-semibold"
-                      : "text-gray-700"
+                      ? "text-[#1C5C7F] bg-blue-50 border-l-4 border-[#F39226]"
+                      : "text-gray-700 hover:text-[#F39226] hover:bg-orange-50 hover:translate-x-2"
                   }`}
                 >
                   {link.label}
@@ -120,6 +167,11 @@ export function Root() {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/actualites" className="text-sm text-white hover:text-[#F39226] transition-colors">
+                    Actualités
+                  </Link>
+                </li>
+                <li>
                   <Link to="/admission" className="text-sm text-white hover:text-[#F39226] transition-colors">
                     Admission
                   </Link>
@@ -145,11 +197,11 @@ export function Root() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone size={16} className="text-[#F39226] flex-shrink-0" />
-                  <p className="text-sm">05 56 84 18 10</p>
+                  <p className="text-sm">05 56 80 76 40</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail size={16} className="text-[#F39226] flex-shrink-0" />
-                  <p className="text-sm">BTS.com.vl@gmail.com</p>
+                  <p className="text-sm">bts-com-vl@gmail.com</p>
                 </div>
               </div>
             </div>
